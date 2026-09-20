@@ -816,8 +816,53 @@
         </div>
 
         <div class="quiz-wrapper" id="quizContainer">
+          <!-- Optional Participant Intro Screen -->
+          <div id="quizIntroView" class="quiz-intro-view" style="padding: 1.75rem 1.5rem; text-align: left;">
+            <div style="text-align: center; margin-bottom: 1.25rem;">
+              <span class="badge" style="background: var(--civic-navy-light); color: var(--civic-navy); margin-bottom: 0.5rem; display: inline-block;" data-i18n="quiz_badge_civic">Civic Engagement Assessment</span>
+              <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin: 0.35rem 0;" data-i18n="quiz_intro_title">Welcome to the Voter Awareness Quiz</h3>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.5;" data-i18n="quiz_intro_desc">
+                5 quick questions covering voter eligibility, electoral rolls, EVM & VVPAT verification, and democratic processes in India.
+              </p>
+            </div>
+
+            <!-- Optional Participant Fields Card -->
+            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem; max-width: 520px; margin: 0 auto 1.25rem;">
+              <div style="font-size: 0.875rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: space-between;">
+                <span data-i18n="quiz_participant_header">Participant Details (Optional)</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;" data-i18n="quiz_optional_tag">100% Optional</span>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.85rem; margin-bottom: 0.85rem;">
+                <div>
+                  <label for="quizParticipantName" style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.3rem;" data-i18n="quiz_input_name_label">Name (optional)</label>
+                  <input type="text" id="quizParticipantName" class="form-input" placeholder="e.g. Rahul Sharma" style="width: 100%; font-size: 0.875rem; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary);" />
+                </div>
+                <div>
+                  <label for="quizParticipantEmail" style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.3rem;" data-i18n="quiz_input_email_label">Email (optional)</label>
+                  <input type="email" id="quizParticipantEmail" class="form-input" placeholder="e.g. rahul@example.com" style="width: 100%; font-size: 0.875rem; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary);" />
+                </div>
+              </div>
+
+              <!-- Mandatory Privacy Notice -->
+              <div style="background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 8px; padding: 0.65rem 0.85rem; font-size: 0.775rem; color: var(--text-secondary); line-height: 1.45;">
+                <strong style="color: var(--text-primary);" data-i18n="quiz_privacy_bold">Privacy Notice:</strong>
+                <span data-i18n="quiz_privacy_notice">Name and email are optional. If provided, they are used only for project-level quiz analysis. Please do not enter sensitive personal information.</span>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+              <button type="button" id="btnStartQuiz" class="btn btn-primary" data-i18n="btn_start_quiz">
+                Start Quiz
+              </button>
+              <button type="button" id="btnSkipInfo" class="btn btn-secondary" data-i18n="btn_skip_quiz_info">
+                Take Quiz Anonymously
+              </button>
+            </div>
+          </div>
+
           <!-- Active Question Screen -->
-          <div id="quizActiveView">
+          <div id="quizActiveView" style="display: none;">
             <div class="quiz-header-bar">
               <span class="quiz-progress-text" id="quizQuestionNumber">Question 1 of 5</span>
               <span class="quiz-score-pill" id="quizScorePill">Score: 0</span>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>Admin Portal - VoteAware India</title>
+  <link rel="icon" type="image/svg+xml" href="./voter-awareness-logo.svg" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    /* Dedicated Admin Portal Styling - Matching VoteAware India Civic Archetype */
+    .admin-body {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-sans);
+    }
+
+    .admin-login-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #F0FDF4 100%);
+    }
+
+    [data-theme="dark"] .admin-login-wrapper {
+      background: linear-gradient(135deg, #0B132B 0%, #0F172A 50%, #111827 100%);
+    }
+
+    .admin-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      box-shadow: var(--shadow-md);
+      padding: 2rem;
+    }
+
+    .admin-login-card {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .admin-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .admin-badge-warning {
+      background-color: #FEF3C7;
+      color: #B45309;
+      border: 1px solid #FDE68A;
+    }
+
+    .admin-badge-success {
+      background-color: #DCFCE7;
+      color: #15803D;
+      border: 1px solid #BBF7D0;
+    }
+
+    .admin-badge-blue {
+      background-color: #DBEAFE;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+    }
+
+    .admin-header-bar {
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 0.85rem 1.5rem;
+    }
+
+    .admin-header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .admin-logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .admin-grid-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.25rem;
+      position: relative;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .metric-card:hover {
+      box-shadow: var(--shadow-sm);
+    }
+
+    .metric-label {
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.35rem;
+    }
+
+    .metric-val {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--civic-navy);
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+
+    [data-theme="dark"] .metric-val {
+      color: #93C5FD;
+    }
+
+    .metric-sub {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .admin-main-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      width: 100%;
+    }
+
+    .admin-section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .admin-table-container {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow-x: auto;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .admin-table th {
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.775rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    .admin-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      vertical-align: middle;
+    }
+
+    .admin-table tr:hover td {
+      background-color: var(--bg-tertiary);
+    }
+
+    .score-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .score-bar-label {
+      width: 45px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--text-primary);
+    }
+
+    .score-bar-track {
+      flex: 1;
+      height: 12px;
+      background: var(--bg-secondary);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      background: var(--civic-navy);
+      border-radius: 6px;
+      transition: width 0.4s ease;
+    }
+
+    .score-bar-count {
+      width: 60px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .btn-export {
+      background: #047857;
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-export:hover {
+      background: #065F46;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--civic-blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .alert-box {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      margin-bottom: 1.25rem;
+      display: none;
+    }
+
+    .alert-error {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      color: #991B1B;
+    }
+
+    .alert-success {
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      color: #166534;
+    }
+
+    .trend-bars-container {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.75rem;
+      height: 140px;
+      padding: 1rem 0 0.5rem;
+    }
+
+    .trend-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+      gap: 0.35rem;
+    }
+
+    .trend-bar {
+      width: 100%;
+      max-width: 32px;
+      background: var(--civic-blue);
+      border-radius: 4px 4px 0 0;
+      min-height: 4px;
+      transition: height 0.4s ease;
+    }
+
+    .trend-count {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .trend-date {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body class="admin-body">
+
+  <!-- ======================================================================
+       1. ADMIN LOGIN VIEW (Displayed when unauthenticated)
+       ====================================================================== -->
+  <div id="adminLoginContainer" class="admin-login-wrapper">
+    <div class="admin-card admin-login-card">
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: #EFF6FF; border: 1px solid #BFDBFE; margin-bottom: 1rem;">
+          <!-- Lock / Shield Vector Icon -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <span class="admin-badge admin-badge-warning" style="margin-bottom: 0.5rem;">Restricted Access</span>
+        <h1 style="font-size: 1.4rem; font-weight: 800; color: var(--text-primary); margin: 0.35rem 0;">VoteAware India</h1>
+        <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Private Administrator Portal</p>
+      </div>
+
+      <div id="loginAlertBox" class="alert-box alert-error" role="alert"></div>
+
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label for="adminEmail" class="form-label">Administrator Email</label>
+          <input
+            type="email"
+            id="adminEmail"
+            name="email"
+            class="form-input"
+            placeholder="admin@voteaware.in"
+            required
+            autocomplete="username"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="adminPassword" class="form-label">Administrator Password</label>
+          <input
+            type="password"
+            id="adminPassword"
+            name="password"
+            class="form-input"
+            placeholder="••••••••••••"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+
+        <button type="submit" id="btnLoginSubmit" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 0.95rem; font-weight: 700;">
+          Sign In to Portal
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color); text-align: center;">
+        <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
+          This private portal is exclusively for authorized college project evaluators. Unauthorized access attempts are monitored and rate-limited.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       2. ADMIN DASHBOARD VIEW (Displayed ONLY when authenticated)
+       ====================================================================== -->
+  <div id="adminDashboardContainer" style="display: none; flex-direction: column; min-height: 100vh;">
+    
+    <!-- Top Bar -->
+    <header class="admin-header-bar">
+      <div class="admin-header-inner">
+        <div class="admin-logo-lockup">
+          <div style="width: 32px; height: 32px; border-radius: 6px; overflow: hidden; background: #0F172A; display: flex; align-items: center; justify-content: center;">
+            <img src="./voter-awareness-logo.svg" alt="VoteAware" style="width: 24px; height: 24px;" />
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-weight: 800; font-size: 1.1rem; color: var(--text-primary);">VoteAware Admin</span>
+              <span class="admin-badge admin-badge-warning" style="font-size: 0.65rem;">Private</span>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Community Engagement Project (CEP) • Academic Year 2024-2025</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <!-- Database Status Indicator -->
+          <div id="dbStatusBadge" class="admin-badge admin-badge-success" title="Storage Status">
+            <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #16A34A;"></span>
+            <span id="dbStatusText">MongoDB Atlas Active</span>
+          </div>
+
+          <!-- Logged In Admin Info -->
+          <div class="admin-badge admin-badge-blue">
+            <span id="adminUserEmail">admin@voteaware.in</span>
+          </div>
+
+          <!-- Refresh Data Button -->
+          <button type="button" id="btnRefreshData" class="btn btn-outline btn-sm" title="Refresh Dashboard Data">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 4v6h-6"></path>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+            Refresh
+          </button>
+
+          <!-- Logout Button -->
+          <button type="button" id="btnLogout" class="btn btn-secondary btn-sm" style="color: #DC2626; border-color: #FECACA;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Admin Dashboard Content -->
+    <main class="admin-main-container">
+
+      <!-- ==================================================================
+           SECTION A: WEBSITE OVERVIEW METRICS
+           ================================================================== -->
+      <div style="margin-bottom: 2rem;">
+        <div class="admin-section-title">
+          <span>Website & Quiz Overview</span>
+          <span style="font-size: 0.8rem; font-weight: 500; color: var(--text-muted);" id="lastRefreshedTime">Live updates</span>
+        </div>
+
+        <div class="admin-grid-metrics">
+          <div class="metric-card">
+            <div class="metric-label">Total Visitors</div>
+            <div class="metric-val" id="metricTotalVisitors">0</div>
+            <div class="metric-sub"><span id="metricUniqueVisitors">0</span> Unique Sessions</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Total Quiz Attempts</div>
+            <div class="metric-val" id="metricTotalQuiz">0</div>
+            <div class="metric-sub">Across All Public Users</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Average Quiz Score</div>
+            <div class="metric-val" id="metricAvgScore">0.0<span style="font-size: 1.1rem; font-weight: 500; color: var(--text-muted);"> / 5</span></div>
+            <div class="metric-sub" id="metricAvgPercent">0% Overall Accuracy</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Today's Visitors</div>
+            <div class="metric-val" id="metricTodayVisitors" style="color: #0284C7;">0</div>
+            <div class="metric-sub">Visits Logged Today</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Today's Quiz Attempts</div>
+            <div class="metric-val" id="metricTodayQuiz" style="color: #16A34A;">0</div>
+            <div class="metric-sub">Completed Quizzes Today</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           SECTION B: QUIZ ANALYTICS & VISITOR ANALYTICS
+           ================================================================== -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+        
+        <!-- Card 1: Quiz Score Distribution -->
+        <div class="admin-card">
+          <div class="admin-section-title">
+            <span>Quiz Score Distribution</span>
+            <span class="admin-badge admin-badge-blue">5 Questions</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+            Breakdown of scores achieved by public participants:
+          </p>
+
+          <div id="scoreDistributionContainer">
+            <!-- 5/5, 4/5, 3/5, 2/5, 1/5, 0/5 rendered by JS -->
+            <div class="score-bar-row">
+              <div class="score-bar-label">5 / 5</div>
+              <div class="score-bar-track"><div class="score-bar-fill" id="bar5" style="width: 0%; background: #16A34A;"></div></div>
+              <div class="score-bar-count" id="count5">0 (0%)</div>
+            </div>
+            <div class="score-bar-row">
+              <div class="score-bar-label">4 / 5</div>
+              <div class="score-bar-track"><div class="score-bar-fill" id="bar4" style="width: 0%; background: #2563EB;"></div></div>
+              <div class="score-bar-count" id="count4">0 (0%)</div>
+            </div>
+            <div class="score-bar-row">
+              <div class="score-bar-label">3 / 5</div>
+              <div class="score-bar-track"><div class="score-bar-fill" id="bar3" style="width: 0%; background: #0284C7;"></div></div>
+              <div class="score-bar-count" id="count3">0 (0%)</div>
+            </div>
+            <div class="score-bar-row">
+              <div class="score-bar-label">2 / 5</div>
+              <div class="score-bar-track"><div class="score-bar-fill" id="bar2" style="width: 0%; background: #F59E0B;"></div></div>
+              <div class="score-bar-count" id="count2">0 (0%)</div>
+            </div>
+            <div class="score-bar-row">
+              <div class="score-bar-label">1 / 5</div>
+              <div class="score-bar-track"><div class="score-bar-fill" id="bar1" style="width: 0%; background: #EA580C;"></div></div>
+              <div class="score-bar-count" id="count1">0 (0%)</div>
+            </div>
+            <div class="score-bar-row">
+              <div class="score-bar-label">0 / 5</div>
+              <div class="score-bar-track"><div class="score-bar-fill" id="bar0" style="width: 0%; background: #DC2626;"></div></div>
+              <div class="score-bar-count" id="count0">0 (0%)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Visitor Trend & Popular Sections -->
+        <div class="admin-card">
+          <div class="admin-section-title">
+            <span>Daily Visitor Trend</span>
+            <span class="admin-badge admin-badge-success">Last 7 Days</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+            Privacy-conscious anonymous session counts:
+          </p>
+
+          <div class="trend-bars-container" id="dailyTrendContainer">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <div style="font-size: 0.875rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem;">
+              Most Visited Educational Sections
+            </div>
+            <div id="popularSectionsList" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================================================================
+           SECTION C: RECENT QUIZ RESPONSES & CSV EXPORT
+           ================================================================== -->
+      <div class="admin-card" style="padding: 1.5rem;">
+        <div class="admin-section-title">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span>Recent Quiz Responses</span>
+            <span id="quizBadgeCount" class="admin-badge admin-badge-blue">0 records</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <select id="scoreFilterSelect" class="form-input" style="padding: 0.45rem 0.75rem; font-size: 0.825rem; width: auto;">
+              <option value="all">All Scores</option>
+              <option value="5">Score 5/5</option>
+              <option value="4">Score 4/5</option>
+              <option value="3">Score 3/5</option>
+              <option value="2">Score 2/5</option>
+              <option value="1">Score 1/5</option>
+              <option value="0">Score 0/5</option>
+            </select>
+
+            <!-- CSV Export Button -->
+            <button type="button" id="btnExportCsv" class="btn-export" title="Download all quiz response records as CSV">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Export Quiz Responses (CSV)
+            </button>
+          </div>
+        </div>
+
+        <p style="font-size: 0.825rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          Name and email are strictly voluntarily provided by public participants for project-level analysis. No sensitive personal data (Aadhaar, Voter ID, political affiliation) is collected or stored.
+        </p>
+
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Attempt ID</th>
+                <th>Participant Name</th>
+                <th>Participant Email</th>
+                <th>Score</th>
+                <th>Percentage</th>
+                <th>Device</th>
+                <th>Completion Date / Time</th>
+              </tr>
+            </thead>
+            <tbody id="quizResponsesTableBody">
+              <tr>
+                <td colspan="7" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                  Loading responses...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer style="margin-top: auto; border-top: 1px solid var(--border-color); background: var(--bg-primary); padding: 1.5rem; text-align: center;">
+      <div style="font-size: 0.8rem; color: var(--text-muted); max-width: 800px; margin: 0 auto;">
+        VoteAware India • Private Administration Portal • Community Engagement Project (CEP) • Academic Year 2024-2025.
+        Strictly non-partisan and compliant with civic educational integrity standards.
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Admin Portal Client Script -->
+  <script type="module" src="./admin-portal.js"></script>
+</body>
+</html>

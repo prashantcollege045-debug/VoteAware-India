@@ -49,7 +49,8 @@ const state = {
     score: 0,
     userAnswers: [null, null, null, null, null],
     answered: false,
-    isComplete: false
+    isComplete: false,
+    participant: { name: "", email: "" }
   }
 };
 
@@ -590,8 +591,36 @@ function renderEligibilityResult({ years, months, days }) {
 // 5-Question Quick Voter Awareness Quiz (Multilingual)
 // ============================================================================
 function initQuiz() {
+  const btnStart = document.getElementById("btnStartQuiz");
+  const btnSkip = document.getElementById("btnSkipInfo");
   const btnNext = document.getElementById("btnQuizNext");
   const btnRestart = document.getElementById("btnRestartQuiz");
+  const introView = document.getElementById("quizIntroView");
+  const activeView = document.getElementById("quizActiveView");
+  const inputName = document.getElementById("quizParticipantName");
+  const inputEmail = document.getElementById("quizParticipantEmail");
+
+  const startQuizFlow = (isAnonymous = false) => {
+    if (isAnonymous) {
+      state.quiz.participant = { name: "", email: "" };
+    } else {
+      const n = inputName ? inputName.value.trim() : "";
+      const e = inputEmail ? inputEmail.value.trim() : "";
+      state.quiz.participant = { name: n, email: e };
+    }
+
+    if (introView) introView.style.display = "none";
+    if (activeView) activeView.style.display = "block";
+    renderQuizQuestion();
+  };
+
+  if (btnStart) {
+    btnStart.addEventListener("click", () => startQuizFlow(false));
+  }
+
+  if (btnSkip) {
+    btnSkip.addEventListener("click", () => startQuizFlow(true));
+  }
 
   if (btnNext) {
     btnNext.addEventListener("click", () => {
@@ -619,7 +648,6 @@ function initQuiz() {
       state.quiz.isComplete = false;
 
       const resultsView = document.getElementById("quizResultsView");
-      const activeView = document.getElementById("quizActiveView");
       if (resultsView && activeView) {
         resultsView.classList.remove("visible");
         resultsView.style.display = "none";
@@ -629,8 +657,6 @@ function initQuiz() {
       renderQuizQuestion();
     });
   }
-
-  renderQuizQuestion();
 }
 
 function renderQuizQuestion() {
@@ -827,6 +853,30 @@ function showQuizResults() {
   if (btnRestart) {
     btnRestart.textContent = t.btn_quiz_retake || "Retake Quiz";
   }
+
+  // Save quiz attempt for project-level analysis (Optional details)
+  try {
+    const getDeviceCategory = () => {
+      if (window.innerWidth < 768) return "Mobile";
+      if (window.innerWidth < 1024) return "Tablet";
+      return "Desktop";
+    };
+
+    fetch("/api/quiz/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: state.quiz.participant.name || "",
+        email: state.quiz.participant.email || "",
+        score: state.quiz.score,
+        totalQuestions: total,
+        answers: state.quiz.userAnswers,
+        deviceCategory: getDeviceCategory()
+      })
+    }).catch(() => {});
+  } catch (err) {
+    // Fail silently without disrupting user experience
+  }
 }
 
 // ============================================================================
@@ -855,6 +905,68 @@ function initSmoothScroll() {
 }
 
 // ============================================================================
+// Privacy-Conscious Anonymous Visitor Analytics
+// ============================================================================
+function initVisitorAnalytics() {
+  let sessionId = sessionStorage.getItem("voteaware_session_id");
+  if (!sessionId) {
+    sessionId = "va_s_" + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+    sessionStorage.setItem("voteaware_session_id", sessionId);
+  }
+
+  const getDeviceCategory = () => {
+    if (window.innerWidth < 768) return "Mobile";
+    if (window.innerWidth < 1024) return "Tablet";
+    return "Desktop";
+  };
+
+  // Track initial page visit
+  try {
+    fetch("/api/analytics/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sessionId,
+        page: window.location.pathname,
+        section: "home",
+        deviceCategory: getDeviceCategory()
+      }),
+      keepalive: true
+    }).catch(() => {});
+  } catch (e) {}
+
+  // Track educational section visits using IntersectionObserver
+  const trackedSections = new Set(["home"]);
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          if (id && !trackedSections.has(id)) {
+            trackedSections.add(id);
+            try {
+              fetch("/api/analytics/track", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  sessionId,
+                  page: window.location.pathname,
+                  section: id,
+                  deviceCategory: getDeviceCategory()
+                }),
+                keepalive: true
+              }).catch(() => {});
+            } catch (err) {}
+          }
+        }
+      });
+    }, { threshold: 0.35 });
+
+    document.querySelectorAll("main section[id]").forEach(sec => observer.observe(sec));
+  }
+}
+
+// ============================================================================
 // Application Bootstrap
 // ============================================================================
 document.addEventListener("DOMContentLoaded", () => {
@@ -868,4 +980,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initQuiz();
   initSmoothScroll();
   initLanguage();
+  initVisitorAnalytics();
 });
