@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoteAware India – Voter Awareness Portal</title>
+  <meta name="description" content="An independent educational voter awareness website for citizens and college students in India featuring simple eligibility guidance, registration instructions, official voter services, and electoral facts." />
+  <meta property="og:title" content="VoteAware India – Voter Awareness Portal" />
+  <meta property="og:description" content="An independent educational voter awareness website for citizens and college students in India featuring simple eligibility guidance, registration instructions, official voter services, and electoral facts." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#1e3a8a" />
+
+  <!-- Favicon / SVG Icon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231e3a8a'/><path d='M8 17l5 5 11-11' stroke='%23ffffff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <!-- Accessible Skip to Main Content Link -->
+  <a href="#main-content" class="skip-to-content" data-i18n="skip_to_content">Skip to main content</a>
+
+  <!-- Top Announcement Bar: Academic Neutrality Declaration -->
+  <div class="top-announcement-bar" role="complementary" aria-label="Project Status">
+    <div class="container announcement-inner">
+      <span data-i18n="top_announcement">Independent Student CEP Project • Strictly Politically Neutral • Official ECI Guidelines</span>
+      <span class="helpline-badge"><span data-i18n="helpline_label">Voter Helpline:</span> <a href="tel:1950" style="color:inherit; font-weight:700;">1950</a></span>
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#home" class="brand-logo" aria-label="VoteAware India Homepage">
+        <span class="logo-title">VoteAware <span>India</span></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active" data-i18n="nav_home">Home</a></li>
+          <li><a href="#learn" class="nav-link" data-i18n="nav_learn">Learn</a></li>
+          <li><a href="#official-services" class="nav-link" data-i18n="nav_services">Voter Services</a></li>
+          <li><a href="#official-sources" class="nav-link" data-i18n="nav_sources">Official Sources</a></li>
+          <li><a href="#quiz" class="nav-link" data-i18n="nav_quiz">Quiz</a></li>
+          <li><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Controls (Accessibility, Language & Theme) -->
+      <div class="header-controls">
+        <!-- Language Switcher Dropdown (English / हिन्दी / मराठी) -->
+        <div class="lang-selector-wrapper" role="region" aria-label="Language selector">
+          <svg class="lang-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <label for="langSelect" class="sr-only">Choose Language / भाषा चुनें / भाषा निवडा</label>
+          <select id="langSelect" class="lang-select" aria-label="Select website language" data-i18n-aria="lang_select_aria">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+          </select>
+        </div>
+
+        <!-- Simple Accessibility Controls: Font Scaling & Contrast -->
+        <div class="a11y-controls" role="group" aria-label="Accessibility Text and Contrast Options" data-i18n-aria="a11y_region_label">
+          <button type="button" class="a11y-btn" id="btnTextDec" title="Decrease font size" aria-label="Decrease text size" data-i18n-title="a11y_dec_title" data-i18n-aria="a11y_dec_aria">A-</button>
+          <button type="button" class="a11y-btn active" id="btnTextNorm" title="Normal font size" aria-label="Normal text size" data-i18n-title="a11y_norm_title" data-i18n-aria="a11y_norm_aria">A</button>
+          <button type="button" class="a11y-btn" id="btnTextInc" title="Increase font size" aria-label="Increase text size" data-i18n-title="a11y_inc_title" data-i18n-aria="a11y_inc_aria">A+</button>
+          <button type="button" class="a11y-btn a11y-contrast-btn" id="btnContrastToggle" title="Toggle High Contrast Mode" aria-label="Toggle High Contrast Mode" data-i18n-title="a11y_contrast_title" data-i18n-aria="a11y_contrast_aria" data-i18n="a11y_contrast_text">Contrast</button>
+        </div>
+
+        <!-- Theme Toggle Button -->
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark and light theme" title="Toggle dark mode" data-i18n-aria="theme_toggle_aria" data-i18n-title="theme_toggle_title">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNavDrawer" data-i18n-aria="mobile_menu_aria">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+      <div class="container mobile-nav-inner">
+        <!-- Mobile Language Selector Row -->
+        <div class="mobile-lang-row">
+          <span class="mobile-lang-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <span data-i18n="lang_select_label">Language</span>:
+          </span>
+          <div class="mobile-lang-pills" role="group" aria-label="Mobile Language Switcher">
+            <button type="button" class="mobile-lang-btn active" data-lang="en">English</button>
+            <button type="button" class="mobile-lang-btn" data-lang="hi">हिन्दी</button>
+            <button type="button" class="mobile-lang-btn" data-lang="mr">मराठी</button>
+          </div>
+        </div>
+
+        <ul class="mobile-nav-links">
+          <li><a href="#home" class="mobile-nav-link" data-i18n="nav_home">Home</a></li>
+          <li><a href="#learn" class="mobile-nav-link" data-i18n="nav_learn">Learn</a></li>
+          <li><a href="#official-services" class="mobile-nav-link" data-i18n="nav_services">Voter Services</a></li>
+          <li><a href="#official-sources" class="mobile-nav-link" data-i18n="nav_sources">Official Sources</a></li>
+          <li><a href="#quiz" class="mobile-nav-link" data-i18n="nav_quiz">Quiz</a></li>
+          <li><a href="#about" class="mobile-nav-link" data-i18n="nav_about">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main id="main-content">
+    
+    <!-- ======================================================================
+         1. HOME SECTION
+         ====================================================================== -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-pill" id="heroPill" data-i18n="hero_pill">DEMOCRATIC EDUCATION</div>
+            <h1 class="hero-title">
+              VoteAware <span class="text-accent">India</span>
+            </h1>
+            <p class="hero-tagline" data-i18n="hero_tagline">
+              Know Your Vote. Know How It Works.
+            </p>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">
+              Learn about voter eligibility, registration, voting, EVM/VVPAT and official voter services in simple language.
+            </p>
+            <div class="hero-buttons">
+              <a href="#learn" class="btn btn-primary btn-lg" id="btnHomeLearn">
+                <span data-i18n="btn_start_learning">Start Learning</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#prepare" class="btn btn-secondary btn-lg" id="btnHomePrepare">
+                <span data-i18n="btn_before_you_vote">Before You Vote Checklist</span>
+              </a>
+              <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg" id="btnHomeDirectEciPortal">
+                <span data-i18n="btn_official_eci_source">Official ECI Source ↗</span>
+              </a>
+            </div>
+
+            <div class="hero-neutrality-notice">
+              <strong data-i18n="hero_neutrality_strong">Democratic Integrity:</strong> <span data-i18n="hero_neutrality_text">This portal is purely educational and non-partisan. For official registrations and services, visit the official Election Commission of India portals directly.</span> <span class="official-source-label" style="margin-left:0.5rem;" data-i18n="official_eci_source_label">Official ECI Source:</span> <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">Official ECI Source ↗</a>
+            </div>
+          </div>
+
+          <div class="hero-illustration-wrapper" id="heroIllustrationWrapper">
+            <div class="hero-card-preview" id="heroCardPreview">
+              <div class="preview-badge" id="previewBadge" data-i18n="preview_badge">Democratic Education</div>
+              <div class="preview-logo-wrapper" id="previewLogoWrapper">
+                <img 
+                  src="./voter-awareness-logo.svg" 
+                  alt="VoteAware India - Know Your Vote. Know How It Works." 
+                  class="preview-logo-img" 
+                  id="previewLogoImg"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+              <div class="preview-title" data-i18n="preview_title">Informed Indian Citizen</div>
+              <div class="preview-desc" data-i18n="preview_desc">Universal Adult Suffrage under Article 326 of the Constitution of India.</div>
+              <div class="preview-stats">
+                <div class="stat-pill"><strong>18+</strong> <span data-i18n="stat_age">Eligible Age</span></div>
+                <div class="stat-pill"><strong>Form 6</strong> <span data-i18n="stat_form">Enroll</span></div>
+                <div class="stat-pill"><strong>EVM</strong> <span data-i18n="stat_evm">Standalone</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Quick-Action Cards -->
+        <div class="quick-action-grid" id="homeQuickActions">
+          <a href="#learn" class="quick-action-card" id="qaAmIEligible">
+            <div>
+              <div class="qa-icon">📋</div>
+              <h3 class="qa-title" data-i18n="qa_1_title">1. Am I Eligible?</h3>
+              <p class="qa-desc" data-i18n="qa_1_desc">Understand age, citizenship, and ordinary residence criteria to vote in India.</p>
+            </div>
+            <span class="qa-link" data-i18n="qa_1_link">Check Eligibility Rules →</span>
+          </a>
+
+          <a href="#learn" class="quick-action-card" id="qaHowToRegister">
+            <div>
+              <div class="qa-icon">✍️</div>
+              <h3 class="qa-title" data-i18n="qa_2_title">2. How to Register</h3>
+              <p class="qa-desc" data-i18n="qa_2_desc">Learn how to fill Form 6, update voter details, and enroll online for free.</p>
+            </div>
+            <span class="qa-link" data-i18n="qa_2_link">Registration Guide →</span>
+          </a>
+
+          <a href="#learn" class="quick-action-card" id="qaHowVotingWorks">
+            <div>
+              <div class="qa-icon">🗳️</div>
+              <h3 class="qa-title" data-i18n="qa_3_title">3. How Voting Works</h3>
+              <p class="qa-desc" data-i18n="qa_3_desc">Step-by-step walkthrough of polling day, verification, and EVM/VVPAT voting.</p>
+            </div>
+            <span class="qa-link" data-i18n="qa_3_link">Voting Process →</span>
+          </a>
+
+          <a href="#official-services" class="quick-action-card" id="qaOfficialServices">
+            <div>
+              <div class="qa-icon">🏛️</div>
+              <h3 class="qa-title" data-i18n="qa_4_title">4. Official Voter Services</h3>
+              <p class="qa-desc" data-i18n="qa_4_desc">Direct links to official ECI portals for forms, roll searches, and 1950 helpline.</p>
+            </div>
+            <span class="qa-link" data-i18n="qa_4_link">Access Official Services →</span>
+          </a>
+        </div>
+
+        <!-- "What do you need?" Interactive Smart Service Finder on Home -->
+        <div class="finder-container" id="homeServiceFinder">
+          <div class="finder-prompt-title" data-i18n="finder_prompt_title">What do you need today?</div>
+          <p class="finder-prompt-desc" data-i18n="finder_prompt_desc">Select an option below to find the exact official Election Commission of India service.</p>
+          
+          <div class="finder-pill-options" role="tablist" aria-label="Common voter tasks">
+            <button type="button" class="finder-pill-btn active" data-need="register" data-i18n="pill_register">I want to register</button>
+            <button type="button" class="finder-pill-btn" data-need="check-name" data-i18n="pill_check_name">I want to check my name</button>
+            <button type="button" class="finder-pill-btn" data-need="polling-station" data-i18n="pill_polling_station">I want to find my polling station</button>
+            <button type="button" class="finder-pill-btn" data-need="voting-process" data-i18n="pill_voting_process">I want to learn how voting works</button>
+            <button type="button" class="finder-pill-btn" data-need="helpline" data-i18n="pill_helpline">I need election help</button>
+          </div>
+
+          <div class="finder-dropdown-row">
+            <label for="homeNeedSelect" class="form-label" style="margin-bottom:0; font-size:0.875rem;" data-i18n="finder_choose_label">Or choose from all services:</label>
+            <select id="homeNeedSelect" class="finder-select" aria-label="Select Voter Need">
+              <option value="register" data-i18n="opt_register">Register as a New Voter (Form 6)</option>
+              <option value="check-name" data-i18n="opt_check_name">Search Electoral Roll (Verify Registration)</option>
+              <option value="track-application" data-i18n="opt_track">Track Application Status</option>
+              <option value="update-details" data-i18n="opt_update">Update / Correct Details (Form 8)</option>
+              <option value="download-epic" data-i18n="opt_download_epic">Download e-EPIC Digital Voter Card</option>
+              <option value="polling-station" data-i18n="opt_polling_station">Find Polling Information & Booth Officers</option>
+              <option value="candidate-info" data-i18n="opt_candidate">Know Candidate Information & Affidavits</option>
+              <option value="helpline" data-i18n="opt_helpline">Get Voter Help & Dial Helpline 1950</option>
+              <option value="voting-process" data-i18n="opt_voting_process">Learn How Voting Works on EVM & VVPAT</option>
+            </select>
+          </div>
+
+          <!-- Dynamic Result Display -->
+          <div class="finder-result-box" id="homeFinderResult">
+            <div class="finder-result-lead" id="finderResultLead">You can use this official ECI service: Form 6 New Voter Registration.</div>
+            <div class="finder-result-desc" id="finderResultDesc">
+              Submit Form 6 online through the official ECI Voter Services Portal. It is 100% free and allows eligible citizens to be added to the electoral roll.
+            </div>
+            <div class="finder-result-action">
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="finderResultLink">
+                Open Official ECI Service ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         2. LEARN SECTION (One simple Learn section with 6 cards)
+         ====================================================================== -->
+    <section id="learn" class="bg-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="learn_section_tag">Electoral Education</span>
+          <h2 class="section-title" data-i18n="learn_section_title">Learn About Voting in India</h2>
+          <p class="section-desc" data-i18n="learn_section_desc">Understand voter eligibility, registration, polling day steps, and EVM/VVPAT technology in clear, simple language.</p>
+          <div class="section-official-source">
+            <span class="official-source-label" data-i18n="btn_official_eci_source">Official ECI Source</span>
+            <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">
+              Official ECI Source ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 6 Simple Topic Cards -->
+        <div class="learn-grid">
+          
+          <!-- Card 1: Who Can Vote? -->
+          <div class="learn-card" id="cardWhoCanVote">
+            <div>
+              <div class="learn-card-header">
+                <span class="learn-card-num">1</span>
+                <h3 class="learn-card-title" data-i18n="card_who_can_vote_title">Who Can Vote?</h3>
+              </div>
+              <p class="learn-card-body" data-i18n="card_who_can_vote_intro">
+                To vote in Indian democratic elections, you must satisfy four basic conditions:
+              </p>
+              <ul class="learn-card-bullets">
+                <li data-i18n-html="who_bullet_1"><strong>Indian Citizen:</strong> You must hold Indian citizenship.</li>
+                <li data-i18n-html="who_bullet_2"><strong>18+ Years Old:</strong> Attained 18 years on or before the qualifying dates (1 Jan, 1 Apr, 1 Jul, 1 Oct). Advance application allowed at 17+.</li>
+                <li data-i18n-html="who_bullet_3"><strong>Ordinary Resident:</strong> Residing in the constituency where you register.</li>
+                <li data-i18n-html="who_bullet_4"><strong>Enrolled in Electoral Roll:</strong> Your name must be listed in the current electoral roll of your polling booth.</li>
+              </ul>
+
+              <!-- Interactive DOB Eligibility Checker -->
+              <div style="margin-top: 1.25rem; padding: 1rem; background-color: var(--bg-tertiary); border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                <div style="font-weight: 700; font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--civic-navy);" data-i18n="dob_checker_title">
+                  Quick Date of Birth Checker:
+                </div>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                  <input type="date" id="dobInput" class="form-input" style="padding: 0.4rem 0.65rem; font-size: 0.875rem; flex: 1; min-width: 150px;" aria-label="Enter date of birth" data-i18n-aria="dob_checker_input_aria" />
+                  <button type="button" class="btn btn-primary btn-sm" id="btnCheckEligibilitySubmit" data-i18n="dob_checker_btn">Check Age</button>
+                </div>
+                <div id="eligibilityResult" style="display:none; margin-top: 0.75rem; padding: 0.75rem; border-radius: var(--radius-sm); background: var(--bg-card); border: 1px solid var(--border-color);">
+                  <div id="eligibilityAgeDisplay" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem;"></div>
+                  <div id="eligibilityStatusBadge" class="eligibility-badge" style="font-size: 0.775rem; display: inline-block; padding: 0.2rem 0.5rem; margin-bottom: 0.5rem;"></div>
+                  <div id="eligibilityMessage" style="font-size: 0.825rem; line-height: 1.45; color: var(--text-secondary);"></div>
+                  <div id="eligibilityActions" style="margin-top: 0.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="official-source-card-footer">
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">
+                Official ECI Source ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2: How to Register -->
+          <div class="learn-card" id="cardHowToRegister">
+            <div>
+              <div class="learn-card-header">
+                <span class="learn-card-num">2</span>
+                <h3 class="learn-card-title" data-i18n="card_how_to_register_title">How to Register</h3>
+              </div>
+              <p class="learn-card-body" data-i18n="card_how_to_register_intro">
+                Voter registration is 100% free of cost on the official Election Commission of India portal.
+              </p>
+              <ul class="learn-card-bullets">
+                <li data-i18n-html="reg_bullet_1"><strong>Form 6:</strong> First-time voters and new enrollments.</li>
+                <li data-i18n-html="reg_bullet_2"><strong>Form 8:</strong> Shifting residence, correction of details, or replacement EPIC.</li>
+                <li data-i18n-html="reg_bullet_3"><strong>Form 6A:</strong> Overseas (NRI) Indian citizens.</li>
+                <li data-i18n-html="reg_bullet_4"><strong>Form 7:</strong> Deletion or objection to an entry in the roll.</li>
+              </ul>
+              <p class="learn-card-body" style="margin-top: 0.75rem; font-size: 0.85rem;" data-i18n-html="reg_note">
+                Applications can be submitted anytime online via <em>voters.eci.gov.in</em> or through the official Voter Helpline App.
+              </p>
+            </div>
+
+            <div class="official-source-card-footer">
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">
+                Official ECI Source ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3: Electoral Roll -->
+          <div class="learn-card" id="cardElectoralRoll">
+            <div>
+              <div class="learn-card-header">
+                <span class="learn-card-num">3</span>
+                <h3 class="learn-card-title" data-i18n="card_electoral_roll_title">Electoral Roll</h3>
+              </div>
+              <p class="learn-card-body" data-i18n="card_electoral_roll_intro">
+                The electoral roll is the official list of registered electors in every polling area.
+              </p>
+              <ul class="learn-card-bullets">
+                <li data-i18n-html="roll_bullet_1"><strong>Mandatory Requirement:</strong> Having a physical Voter ID card is not enough. You can only vote if your name is actively on the roll.</li>
+                <li data-i18n-html="roll_bullet_2"><strong>Polling Station Info:</strong> The roll provides your designated polling booth, assembly constituency, and serial number.</li>
+                <li data-i18n-html="roll_bullet_3"><strong>Verify Before Election Day:</strong> Check your name online in advance using Electoral Search so there are no surprises on voting day.</li>
+              </ul>
+            </div>
+
+            <div class="official-source-card-footer">
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">
+                Official ECI Source ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 4: How Voting Works -->
+          <div class="learn-card" id="cardHowVotingWorks">
+            <div>
+              <div class="learn-card-header">
+                <span class="learn-card-num">4</span>
+                <h3 class="learn-card-title" data-i18n="card_how_voting_works_title">How Voting Works</h3>
+              </div>
+              <p class="learn-card-body" data-i18n="card_how_voting_works_intro">
+                On election day, voting follows a smooth, secure standard process at your assigned booth:
+              </p>
+              <ul class="learn-card-bullets">
+                <li data-i18n-html="vote_bullet_1"><strong>1. ID Verification:</strong> First polling officer matches your name against the official electoral roll and checks your photo ID.</li>
+                <li data-i18n-html="vote_bullet_2"><strong>2. Indelible Ink & Register:</strong> Second polling officer marks your left forefinger with indelible ink and records your signature.</li>
+                <li data-i18n-html="vote_bullet_3"><strong>3. Secret Voting Compartment:</strong> Enter the private booth, press the blue button next to your chosen candidate on the Balloting Unit.</li>
+                <li data-i18n-html="vote_bullet_4"><strong>4. Beep & Confirm:</strong> A red indicator glows, the VVPAT prints your verification slip, and a long beep confirms your vote.</li>
+              </ul>
+            </div>
+
+            <div class="official-source-card-footer">
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <a href="https://www.eci.gov.in/faq/en/how-to-vote/" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">
+                Official ECI Source ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 5: EVM & VVPAT -->
+          <div class="learn-card" id="cardEvmVvpat">
+            <div>
+              <div class="learn-card-header">
+                <span class="learn-card-num">5</span>
+                <h3 class="learn-card-title" data-i18n="card_evm_vvpat_title">EVM & VVPAT</h3>
+              </div>
+              <p class="learn-card-body" data-i18n="card_evm_vvpat_intro">
+                India's Electronic Voting Machines (EVMs) and Voter Verifiable Paper Audit Trail (VVPAT) ensure transparency:
+              </p>
+              <ul class="learn-card-bullets">
+                <li data-i18n-html="evm_bullet_1"><strong>Standalone Devices:</strong> EVMs operate on simple independent battery packs. They have no internet, Wi-Fi, Bluetooth, or wireless connections.</li>
+                <li data-i18n-html="evm_bullet_2"><strong>7-Second Paper Verification:</strong> When you press the vote button, the VVPAT prints a slip showing the candidate's serial number, name, and symbol behind a glass window.</li>
+                <li data-i18n-html="evm_bullet_3"><strong>Sealed Audit Box:</strong> After 7 seconds, the slip cuts automatically and drops into a locked, tamper-proof compartment used for physical audit verification.</li>
+              </ul>
+            </div>
+
+            <div class="official-source-card-footer">
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <a href="https://www.eci.gov.in/evm-vvpat" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">
+                Official ECI Source ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 6: Voter Rights & Responsibilities -->
+          <div class="learn-card" id="cardRightsResponsibilities">
+            <div>
+              <div class="learn-card-header">
+                <span class="learn-card-num">6</span>
+                <h3 class="learn-card-title" data-i18n="card_rights_title">Voter Rights & Responsibilities</h3>
+              </div>
+              <p class="learn-card-body" data-i18n="card_rights_intro">
+                Informed participation forms the backbone of a vibrant democratic society:
+              </p>
+              <ul class="learn-card-bullets">
+                <li data-i18n-html="rights_bullet_1"><strong>Secrecy of Vote:</strong> Your ballot choice is confidential by law; no one can compel you to reveal your vote.</li>
+                <li data-i18n-html="rights_bullet_2"><strong>Accessible Polling:</strong> Priority queues, ramps, wheelchairs, and braille voter slips for senior citizens and persons with disabilities.</li>
+                <li data-i18n-html="rights_bullet_3"><strong>Know Candidates:</strong> Right to view affidavits detailing educational, financial, and criminal history.</li>
+                <li data-i18n-html="rights_bullet_4"><strong>Civic Responsibility:</strong> Verify enrollment early, carry valid ID, follow booth rules, and reject unverified rumors.</li>
+              </ul>
+            </div>
+
+            <div class="official-source-card-footer">
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <a href="https://www.eci.gov.in/voter-education" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">
+                Official ECI Source ↗
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. CHECK / PREPARE ("Before You Vote" Checklist)
+         ====================================================================== -->
+    <section id="prepare">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="prep_section_tag">Readiness Guide</span>
+          <h2 class="section-title" data-i18n="prep_section_title">Before You Vote</h2>
+          <p class="section-desc" data-i18n="prep_section_desc">Review your personal polling readiness checklist before heading to your polling station on election day.</p>
+          <div class="section-official-source">
+            <span class="official-source-label" data-i18n="btn_official_eci_source">Official ECI Source</span>
+            <a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">
+              Official ECI Source ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Checklist Box -->
+        <div class="checklist-container">
+          <div class="checklist-status-bar">
+            <div class="checklist-progress-text" id="checklistProgressCount">
+              Ready for Polling Day: 0 of 6 steps checked
+            </div>
+            <button type="button" class="btn btn-secondary btn-xs" id="btnResetChecklist" data-i18n="btn_reset_checklist">Reset Checklist</button>
+          </div>
+
+          <div class="checklist-items-list" id="voterChecklistItems">
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" />
+              <span class="checklist-item-text" data-i18n="chk_item_1">Check your eligibility</span>
+            </label>
+
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" />
+              <span class="checklist-item-text" data-i18n="chk_item_2">Check your name in the electoral roll</span>
+            </label>
+
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" />
+              <span class="checklist-item-text" data-i18n="chk_item_3">Check your polling information</span>
+            </label>
+
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" />
+              <span class="checklist-item-text" data-i18n="chk_item_4">Read the current official polling instructions</span>
+            </label>
+
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" />
+              <span class="checklist-item-text" data-i18n="chk_item_5">Carry permitted identification</span>
+            </label>
+
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" />
+              <span class="checklist-item-text" data-i18n="chk_item_6">Follow polling-station instructions</span>
+            </label>
+          </div>
+
+          <div class="checklist-footer-actions">
+            <div class="checklist-disclaimer" data-i18n-html="chk_disclaimer">
+              <strong>Notice:</strong> VoteAware India is an educational portal and does not verify or hold voter records. Use official ECI services for actual verification.
+            </div>
+            <a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="btnCheckOfficialDetails" data-i18n="btn_check_official_details">
+              Check Official Details ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. OFFICIAL VOTER SERVICES (6 Clean Service Cards)
+         ====================================================================== -->
+    <section id="official-services" class="bg-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="services_section_tag">Direct Government Portals</span>
+          <h2 class="section-title" data-i18n="services_section_title">Official Voter Services</h2>
+          <p class="section-desc" data-i18n="services_section_desc">VoteAware India does not provide registration, updates, or voter cards directly. Access all official services on the Election Commission of India portals.</p>
+          <div class="section-official-source">
+            <span class="official-source-label" data-i18n="btn_official_eci_source">Official ECI Source</span>
+            <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">
+              Official ECI Source ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service 1: Register as a Voter -->
+          <div class="service-card" id="serviceRegisterVoter">
+            <div>
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <h3 class="service-card-title" data-i18n="srv_1_title">1. Register as a Voter</h3>
+              <p class="service-card-desc" data-i18n="srv_1_desc">
+                First-time voters and new enrollments can submit Form 6 securely and free of cost directly on the official Voter Services Portal.
+              </p>
+            </div>
+            <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="btn_official_eci_source">
+              Official ECI Source ↗
+            </a>
+          </div>
+
+          <!-- Service 2: Update Voter Details -->
+          <div class="service-card" id="serviceUpdateDetails">
+            <div>
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <h3 class="service-card-title" data-i18n="srv_2_title">2. Update Voter Details</h3>
+              <p class="service-card-desc" data-i18n="srv_2_desc">
+                Submit Form 8 for shifting residence, correction of personal details, or request a replacement Voter ID (EPIC).
+              </p>
+            </div>
+            <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="btn_official_eci_source">
+              Official ECI Source ↗
+            </a>
+          </div>
+
+          <!-- Service 3: Check Name in Electoral Roll -->
+          <div class="service-card" id="serviceCheckRoll">
+            <div>
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <h3 class="service-card-title" data-i18n="srv_3_title">3. Check Name in Electoral Roll</h3>
+              <p class="service-card-desc" data-i18n="srv_3_desc">
+                Search the national electoral database by EPIC number, personal details, or mobile number to verify polling booth information.
+              </p>
+            </div>
+            <a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="btn_official_eci_source">
+              Official ECI Source ↗
+            </a>
+          </div>
+
+          <!-- Service 4: Track Application Status -->
+          <div class="service-card" id="serviceTrackStatus">
+            <div>
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <h3 class="service-card-title" data-i18n="srv_4_title">4. Track Application Status</h3>
+              <p class="service-card-desc" data-i18n="srv_4_desc">
+                Track the processing status of your submitted Form 6, Form 6A, Form 7, or Form 8 using your official Reference Number.
+              </p>
+            </div>
+            <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="btn_official_eci_source">
+              Official ECI Source ↗
+            </a>
+          </div>
+
+          <!-- Service 5: Download e-EPIC -->
+          <div class="service-card" id="serviceDownloadEpic">
+            <div>
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <h3 class="service-card-title" data-i18n="srv_5_title">5. Download e-EPIC</h3>
+              <p class="service-card-desc" data-i18n="srv_5_desc">
+                Download a portable, secure, digital PDF version of your Electoral Photo Identity Card with verified QR code.
+              </p>
+            </div>
+            <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="btn_official_eci_source">
+              Official ECI Source ↗
+            </a>
+          </div>
+
+          <!-- Service 6: ECI Official Portal -->
+          <div class="service-card" id="serviceEciMain">
+            <div>
+              <span class="official-badge" data-i18n="btn_official_eci_source">Official ECI Source</span>
+              <h3 class="service-card-title" data-i18n="srv_6_title">6. Election Commission of India</h3>
+              <p class="service-card-desc" data-i18n="srv_6_desc">
+                The constitutional authority conducting elections across India. View press releases, election schedules, and observer reports.
+              </p>
+            </div>
+            <a href="https://www.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" data-i18n="btn_official_eci_source">
+              Official ECI Source ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Official Helpline Box -->
+        <div class="helpline-card-box" style="margin-top: 2rem;" data-i18n-html="helpline_card_text">
+          <strong>Official National Voter Helpline:</strong> Call toll-free <a href="tel:1950" class="helpline-num">1950</a> for civic queries • Available 24/7 across all states and union territories.
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. OFFICIAL SOURCES & VERIFIED FACTS
+         ====================================================================== -->
+    <section id="official-sources">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="sources_section_tag">Direct Government Portals</span>
+          <h2 class="section-title" data-i18n="sources_section_title">Official ECI Sources</h2>
+          <p class="section-desc" data-i18n="sources_section_desc">VoteAware India is an educational guide. All official voter actions must be done through Election Commission of India portals.</p>
+        </div>
+
+        <!-- Official Sources Links Grid -->
+        <div class="services-grid" style="margin-bottom: 3rem;">
+          <div class="service-card">
+            <div>
+              <span class="official-badge" data-i18n="src_badge_apex">Apex Constitutional Body</span>
+              <h3 class="service-card-title" data-i18n="src_title_eci">Election Commission of India</h3>
+              <p class="service-card-desc" data-i18n="src_desc_eci">
+                The constitutional authority responsible for conducting national and state elections across India.
+              </p>
+            </div>
+            <a href="https://www.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              www.eci.gov.in ↗
+            </a>
+          </div>
+
+          <div class="service-card">
+            <div>
+              <span class="official-badge" data-i18n="src_badge_portal">Voter Registration & Services</span>
+              <h3 class="service-card-title" data-i18n="src_title_portal">ECI Voter Services Portal</h3>
+              <p class="service-card-desc" data-i18n="src_desc_portal">
+                Submit Form 6 (new registration), Form 8 (corrections/shifting), Form 7, and download digital e-EPIC.
+              </p>
+            </div>
+            <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              voters.eci.gov.in ↗
+            </a>
+          </div>
+
+          <div class="service-card">
+            <div>
+              <span class="official-badge" data-i18n="src_badge_search">National Electoral Database</span>
+              <h3 class="service-card-title" data-i18n="src_title_search">Electoral Search Portal</h3>
+              <p class="service-card-desc" data-i18n="src_desc_search">
+                Search your name in the electoral roll, find your polling booth, and check serial/part numbers.
+              </p>
+            </div>
+            <a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              electoralsearch.eci.gov.in ↗
+            </a>
+          </div>
+
+          <div class="service-card">
+            <div>
+              <span class="official-badge" data-i18n="src_badge_manuals">Official Manuals & FAQs</span>
+              <h3 class="service-card-title" data-i18n="src_title_manuals">Official Guidelines & FAQs</h3>
+              <p class="service-card-desc" data-i18n="src_desc_manuals">
+                Verified electoral handbooks, FAQs on voter rights, EVM/VVPAT operation, and candidate affidavits.
+              </p>
+            </div>
+            <a href="https://www.eci.gov.in/mfaq" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+              eci.gov.in/mfaq ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Myth vs Fact Educational Breakdown -->
+        <div id="myths" style="margin-top: 1rem;">
+          <div class="section-header" style="margin-bottom: 1.5rem;">
+            <span class="section-tag" data-i18n="myths_tag">Fact Check & Clarifications</span>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--civic-navy); margin-bottom: 0.5rem;" data-i18n="myths_title">Myth vs Fact</h3>
+            <p class="section-desc" data-i18n="myths_desc">6 essential verified facts addressing common electoral misconceptions.</p>
+          </div>
+
+          <div class="myths-grid" id="mythsGrid">
+            <!-- Rendered with i18n support by script.js -->
+            <div class="myth-fact-card">
+              <div class="box-myth">
+                <span class="box-myth-label" data-i18n="badge_myth">Myth</span>
+                <div class="box-myth-text" data-i18n="myth_1_myth">Having a Voter ID automatically means I can vote.</div>
+              </div>
+              <div class="box-fact">
+                <span class="box-fact-label" data-i18n="badge_fact">Fact</span>
+                <div class="box-fact-text" data-i18n="myth_1_fact">Your name must appear in the active electoral roll of your polling booth on election day.</div>
+              </div>
+            </div>
+
+            <div class="myth-fact-card">
+              <div class="box-myth">
+                <span class="box-myth-label" data-i18n="badge_myth">Myth</span>
+                <div class="box-myth-text" data-i18n="myth_2_myth">EVMs are connected to Wi-Fi, Bluetooth, or the internet.</div>
+              </div>
+              <div class="box-fact">
+                <span class="box-fact-label" data-i18n="badge_fact">Fact</span>
+                <div class="box-fact-text" data-i18n="myth_2_fact">EVMs are completely standalone battery-operated devices with zero network connectivity.</div>
+              </div>
+            </div>
+
+            <div class="myth-fact-card">
+              <div class="box-myth">
+                <span class="box-myth-label" data-i18n="badge_myth">Myth</span>
+                <div class="box-myth-text" data-i18n="myth_3_myth">VVPAT paper slips can be taken home by the voter.</div>
+              </div>
+              <div class="box-fact">
+                <span class="box-fact-label" data-i18n="badge_fact">Fact</span>
+                <div class="box-fact-text" data-i18n="myth_3_fact">The slip is visible for 7 seconds through a transparent window before automatically dropping into a sealed audit box.</div>
+              </div>
+            </div>
+
+            <div class="myth-fact-card">
+              <div class="box-myth">
+                <span class="box-myth-label" data-i18n="badge_myth">Myth</span>
+                <div class="box-myth-text" data-i18n="myth_4_myth">Online voter registration requires paying a fee.</div>
+              </div>
+              <div class="box-fact">
+                <span class="box-fact-label" data-i18n="badge_fact">Fact</span>
+                <div class="box-fact-text" data-i18n="myth_4_fact">Voter registration on the official ECI portal (voters.eci.gov.in) is completely free of charge.</div>
+              </div>
+            </div>
+
+            <div class="myth-fact-card">
+              <div class="box-myth">
+                <span class="box-myth-label" data-i18n="badge_myth">Myth</span>
+                <div class="box-myth-text" data-i18n="myth_5_myth">Only people living in their native hometown can register.</div>
+              </div>
+              <div class="box-fact">
+                <span class="box-fact-label" data-i18n="badge_fact">Fact</span>
+                <div class="box-fact-text" data-i18n="myth_5_fact">You can register wherever you are ordinarily resident for study or work, but you can only be enrolled in one place.</div>
+              </div>
+            </div>
+
+            <div class="myth-fact-card">
+              <div class="box-myth">
+                <span class="box-myth-label" data-i18n="badge_myth">Myth</span>
+                <div class="box-myth-text" data-i18n="myth_6_myth">Third-party private websites are required for voter registration.</div>
+              </div>
+              <div class="box-fact">
+                <span class="box-fact-label" data-i18n="badge_fact">Fact</span>
+                <div class="box-fact-text" data-i18n="myth_6_fact">Never share personal credentials with private websites. Use the official ECI portal voters.eci.gov.in directly.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:2rem; display:flex; align-items:center; justify-content:center; gap:0.5rem; flex-wrap:wrap;">
+          <span class="official-source-label" data-i18n="official_faqs_link_label">Official ECI Electoral FAQs & Manuals:</span>
+          <a href="https://www.eci.gov.in/mfaq" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">
+            Official ECI Source ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         9. QUIZ
+         ====================================================================== -->
+    <section id="quiz">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="quiz_section_tag">Interactive Knowledge Test</span>
+          <h2 class="section-title" data-i18n="quiz_section_title">Quick Voter Awareness Quiz</h2>
+          <p class="section-desc" data-i18n="quiz_section_desc">Test your basic knowledge about voting in India.</p>
+        </div>
+
+        <div class="quiz-wrapper" id="quizContainer">
+          <!-- Active Question Screen -->
+          <div id="quizActiveView">
+            <div class="quiz-header-bar">
+              <span class="quiz-progress-text" id="quizQuestionNumber">Question 1 of 5</span>
+              <span class="quiz-score-pill" id="quizScorePill">Score: 0</span>
+            </div>
+
+            <div class="quiz-question-box">
+              <h3 class="quiz-question-title" id="quizQuestionText">Loading question...</h3>
+              <div class="quiz-options-list" id="quizOptionsList">
+                <!-- 4 Options rendered by script.js -->
+              </div>
+            </div>
+
+            <!-- Explanation box shown after selection -->
+            <div class="quiz-explanation-box" id="quizExplanationBox">
+              <div class="quiz-explanation-title" id="quizFeedbackTitle">Feedback</div>
+              <p id="quizExplanationText" style="font-size:0.925rem; color:var(--text-secondary); line-height:1.5; margin:0;"></p>
+            </div>
+
+            <div class="quiz-footer-actions">
+              <span id="quizHintText" style="font-size:0.85rem; color:var(--text-muted);" data-i18n="quiz_hint_default">Choose one option to proceed.</span>
+              <button type="button" class="btn btn-primary" id="btnQuizNext" style="display:none;" data-i18n="btn_quiz_next">Next</button>
+            </div>
+          </div>
+
+          <!-- Quiz Completion Screen -->
+          <div class="quiz-results-screen" id="quizResultsView">
+            <div class="score-circle">
+              <span style="font-size:2rem; font-weight:800; color:var(--civic-navy);" id="finalScoreVal">0</span>
+              <span style="font-size:0.8rem; font-weight:600; color:var(--text-muted);" id="finalScoreTotal" data-i18n="quiz_score_out_of">OUT OF 5</span>
+            </div>
+            <h3 style="font-size:1.35rem; font-weight:700; color:var(--text-primary);" id="finalFeedbackTitle">Your Score: 0/5</h3>
+            <p style="font-size:0.95rem; color:var(--text-secondary); max-width:500px; line-height:1.6;" id="finalFeedbackMsg">
+              Thank you for participating in the voter awareness quiz.
+            </p>
+            <button type="button" class="btn btn-primary" id="btnRestartQuiz" data-i18n="btn_quiz_retake">Retake Quiz</button>
+          </div>
+        </div>
+
+        <!-- Official ECI Sources -->
+        <div class="quiz-official-sources" style="margin-top: 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.6rem;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em;" data-i18n="quiz_sources_heading">Official ECI Sources</span>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
+            <a href="https://www.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn">
+              Election Commission of India (eci.gov.in) ↗
+            </a>
+            <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn">
+              ECI Voters' Service Portal (voters.eci.gov.in) ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         7. ABOUT THE PROJECT
+         ====================================================================== -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="about_section_tag">Student Initiative</span>
+          <h2 class="section-title" data-i18n="about_section_title">About the Project</h2>
+          <p class="section-desc" data-i18n="about_section_desc">Independent educational Community Engagement Project.</p>
+          <div class="section-official-source">
+            <span class="official-source-label" data-i18n="btn_official_eci_source">Official ECI Source</span>
+            <a href="https://www.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn" data-i18n="btn_official_eci_source">
+              Official ECI Source ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <p class="about-lead" data-i18n="about_lead">
+            VoteAware India is a student-led CEP educational project created to improve basic voter awareness and digital access to official election information.
+          </p>
+
+          <div class="about-disclaimer-box">
+            <strong class="about-disclaimer-title" data-i18n="about_disclaimer_title">Official Affiliation Disclaimer</strong>
+            <p class="about-disclaimer-text" data-i18n="about_disclaimer_text">
+              VoteAware India is an independent educational/student project. It is not affiliated with, endorsed by, or operated by the Election Commission of India or any government organisation. The website is strictly an educational guide and does not perform government services itself. Whenever you need to register, submit a form, search the electoral roll, track an application, download e-EPIC, or access official election information, always use the official Election Commission of India websites directly.
+            </p>
+            <div style="margin-top:1rem; display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+              <span class="official-source-label" data-i18n="about_portals_label">Official Election Commission Portals:</span>
+              <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn">
+                Official ECI Source: voters.eci.gov.in ↗
+              </a>
+              <a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener noreferrer" class="official-source-btn">
+                Official ECI Source: Electoral Search ↗
+              </a>
+            </div>
+          </div>
+
+          <p class="about-privacy-notice" data-i18n="about_privacy_notice">
+            Security & Privacy Notice: This platform does not ask for or collect sensitive data such as Aadhaar numbers, PAN cards, bank details, or passwords. All voter registration and search activities take place exclusively on official Election Commission of India websites.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-brand">
+          <div class="logo-title footer-brand-logo">VoteAware <span>India</span></div>
+          <p class="footer-brand-desc" data-i18n="footer_brand_desc">
+            A student-led Community Engagement Project (CEP) dedicated to neutral voter awareness and civic literacy in India.
+          </p>
+          <div class="footer-neutral-tag" data-i18n="footer_neutral_tag">
+            ✓ Educational & Politically Neutral
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_nav">Voter Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home" data-i18n="footer_link_home">Home</a></li>
+            <li><a href="#learn" data-i18n="footer_link_learn">Learn</a></li>
+            <li><a href="#prepare" data-i18n="footer_link_prepare">Before You Vote</a></li>
+            <li><a href="#official-services" data-i18n="footer_link_services">Voter Services</a></li>
+            <li><a href="#official-sources" data-i18n="footer_link_sources">Official Sources</a></li>
+            <li><a href="#quiz" data-i18n="footer_link_quiz">Voter Quiz</a></li>
+            <li><a href="#about" data-i18n="footer_link_about">About Project</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_topics">Topic Guides</h4>
+          <ul class="footer-links">
+            <li><a href="#cardWhoCanVote" data-i18n="footer_topic_who">Who Can Vote?</a></li>
+            <li><a href="#cardHowToRegister" data-i18n="footer_topic_register">Voter Registration</a></li>
+            <li><a href="#cardElectoralRoll" data-i18n="footer_topic_roll">Electoral Roll</a></li>
+            <li><a href="#cardHowVotingWorks" data-i18n="footer_topic_voting">How Voting Works</a></li>
+            <li><a href="#cardEvmVvpat" data-i18n="footer_topic_evm">EVM & VVPAT</a></li>
+            <li><a href="#myths" data-i18n="footer_topic_myths">Myth vs Fact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer_col_links">Official ECI Links</h4>
+          <ul class="footer-links">
+            <li><a href="https://voters.eci.gov.in/" target="_blank" rel="noopener noreferrer">voters.eci.gov.in ↗</a></li>
+            <li><a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener noreferrer">Electoral Search ↗</a></li>
+            <li><a href="https://www.eci.gov.in/" target="_blank" rel="noopener noreferrer">ECI Official Portal ↗</a></li>
+            <li><a href="https://www.eci.gov.in/evm-vvpat" target="_blank" rel="noopener noreferrer">EVM & VVPAT ↗</a></li>
+            <li><a href="tel:1950"><span data-i18n="helpline_label">Voter Helpline:</span> 1950</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div data-i18n="footer_verif_note">
+          Information should be verified with current official ECI instructions.
+        </div>
+        <div class="footer-subtext" data-i18n="footer_credit_line">
+          VoteAware India • Student Community Engagement Project (CEP) • Not affiliated with the Election Commission of India.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript Application Logic -->
+  <script type="module" src="./script.js"></script>
+</body>
+</html>

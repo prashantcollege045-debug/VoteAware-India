@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000" width="1500" height="1000">
+  <defs>
+    <!-- India Text Tricolor Gradient -->
+    <linearGradient id="indiaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF671F" />
+      <stop offset="38%" stop-color="#FF7A00" />
+      <stop offset="52%" stop-color="#16A34A" />
+      <stop offset="100%" stop-color="#046A38" />
+    </linearGradient>
+
+    <!-- Tricolor Bar Gradient -->
+    <linearGradient id="flagBarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF671F" />
+      <stop offset="42%" stop-color="#FF7A00" />
+      <stop offset="47%" stop-color="#FFFFFF" />
+      <stop offset="53%" stop-color="#FFFFFF" />
+      <stop offset="58%" stop-color="#16A34A" />
+      <stop offset="100%" stop-color="#046A38" />
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="ribbonShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.18" />
+    </filter>
+    <filter id="iconShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.22" />
+    </filter>
+    <filter id="ballotShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.2" />
+    </filter>
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#22C55E" flood-opacity="0.6" />
+    </filter>
+
+    <!-- Ballot Box Gradient -->
+    <linearGradient id="boxBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" />
+      <stop offset="100%" stop-color="#0B1E38" />
+    </linearGradient>
+
+    <!-- Box Lid / Top Gradient -->
+    <linearGradient id="boxLidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+
+    <!-- Digital Screen Gradient -->
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0A1628" />
+      <stop offset="100%" stop-color="#060D18" />
+    </linearGradient>
+  </defs>
+
+  <!-- Clean Pure White Canvas -->
+  <rect width="1500" height="1000" fill="#FFFFFF" />
+
+  <!-- ==================== LEFT EMBLEM: VOTER AWARENESS (BALLOT BOX + DEMOCRACY + DIGITAL TECH) ==================== -->
+  <g id="emblemGroup" transform="translate(300, 465)">
+    <!-- Circular Democracy & Digital Halo Background -->
+    <circle cx="0" cy="0" r="188" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2" />
+    <circle cx="0" cy="0" r="180" fill="none" stroke="#93C5FD" stroke-width="3" stroke-opacity="0.5" />
+    <circle cx="0" cy="0" r="172" fill="none" stroke="#60A5FA" stroke-width="2" stroke-dasharray="6,5" stroke-opacity="0.4" />
+
+    <!-- Subtle Digital Circuit / Node Grid around halo -->
+    <g stroke="#93C5FD" stroke-width="2" stroke-opacity="0.45">
+      <line x1="-120" y1="-120" x2="-145" y2="-145" />
+      <line x1="120" y1="-120" x2="145" y2="-145" />
+      <line x1="-150" y1="0" x2="-175" y2="0" />
+      <line x1="150" y1="0" x2="175" y2="0" />
+      <line x1="-120" y1="120" x2="-145" y2="145" />
+      <line x1="120" y1="120" x2="145" y2="145" />
+      <line x1="0" y1="-150" x2="0" y2="-175" />
+      <line x1="0" y1="150" x2="0" y2="175" />
+    </g>
+    <!-- Digital Connection Nodes -->
+    <g fill="#3B82F6" opacity="0.65">
+      <circle cx="-145" cy="-145" r="4" />
+      <circle cx="145" cy="-145" r="4" />
+      <circle cx="-175" cy="0" r="4" />
+      <circle cx="175" cy="0" r="4" />
+      <circle cx="-145" cy="145" r="4" />
+      <circle cx="145" cy="145" r="4" />
+      <circle cx="0" cy="-175" r="4" />
+      <circle cx="0" cy="175" r="4" />
+    </g>
+
+    <!-- Indian Tricolor Swirl Ribbon (Democracy Foundation) -->
+    <g filter="url(#ribbonShadow)">
+      <!-- Green bottom ribbon -->
+      <path d="M -205,45 C -165,160 -30,225 95,200 C 160,185 205,130 215,100 C 185,140 125,170 55,175 C -60,185 -160,125 -190,55 Z" fill="#046A38" />
+      <!-- White middle ribbon -->
+      <path d="M -220,20 C -175,140 -40,205 85,180 C 150,165 195,110 205,80 C 175,120 115,150 45,155 C -70,165 -170,105 -200,35 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+      <!-- Saffron top ribbon -->
+      <path d="M -235,-5 C -185,120 -50,185 75,160 C 140,145 185,90 195,60 C 165,100 105,130 35,135 C -80,145 -180,85 -210,15 Z" fill="#FF671F" />
+    </g>
+
+    <!-- ================= MODERN DIGITAL BALLOT BOX ================= -->
+    <g id="ballotBoxIcon" filter="url(#iconShadow)">
+      <!-- Ballot Slip entering the slot (drawn behind box front lip) -->
+      <g filter="url(#ballotShadow)">
+        <!-- White Ballot Paper Card -->
+        <rect x="-46" y="-155" width="92" height="110" rx="9" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2.5" />
+        
+        <!-- Saffron Header Bar on Ballot -->
+        <rect x="-46" y="-155" width="92" height="18" rx="8" fill="#FF671F" />
+        <rect x="-46" y="-142" width="92" height="5" fill="#FF671F" />
+        
+        <!-- Vibrant Green Vote Checkmark (Verified Voting) -->
+        <path d="M -18,-106 L -5,-93 L 20,-118" fill="none" stroke="#16A34A" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glowGreen)" />
+        
+        <!-- Digital Vote Validation Bars on Paper -->
+        <line x1="-28" y1="-76" x2="28" y2="-76" stroke="#94A3B8" stroke-width="3" stroke-linecap="round" />
+        <line x1="-28" y1="-66" x2="12" y2="-66" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round" />
+      </g>
+
+      <!-- Ballot Box Main Body (Modern Architectural Geometry) -->
+      <rect x="-92" y="-55" width="184" height="175" rx="20" fill="url(#boxBodyGrad)" stroke="#0D2B52" stroke-width="4.5" />
+      
+      <!-- Top Box Lid / Casting Bevel (Blue with Saffron Accent Rim) -->
+      <path d="M -98,-52 L -78,-72 L 78,-72 L 98,-52 Z" fill="url(#boxLidGrad)" stroke="#0D2B52" stroke-width="3.5" stroke-linejoin="round" />
+      
+      <!-- Top Slot Rim (Saffron highlight) -->
+      <rect x="-56" y="-76" width="112" height="12" rx="6" fill="#FF671F" stroke="#EA580C" stroke-width="1.5" />
+      <!-- Slot Aperture -->
+      <rect x="-48" y="-74" width="96" height="7" rx="3.5" fill="#071220" />
+
+      <!-- Front Panel: Digital Smart Voting Screen / Verification Window -->
+      <rect x="-70" y="-30" width="140" height="85" rx="14" fill="url(#screenGrad)" stroke="#1E40AF" stroke-width="2.5" />
+      <rect x="-66" y="-26" width="132" height="77" rx="10" fill="none" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.4" />
+
+      <!-- Digital Screen Content: Tech Wave + Civic Status -->
+      <path d="M -54,12 Q -38,12 -30,0 T -15,12 T 0,-8 T 15,22 T 30,12 L 54,12" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.85" />
+
+      <!-- Digital Green Indicator LED ("Vote Cast / Ready" Civic LED) -->
+      <circle cx="-42" cy="-10" r="5" fill="#22C55E" filter="url(#glowGreen)" />
+      <circle cx="-42" cy="-10" r="8" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-opacity="0.6" />
+
+      <!-- Digital Status Text: "VERIFIED" -->
+      <text x="5" y="-6" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#E2E8F0" letter-spacing="1.5">VERIFIED</text>
+      
+      <!-- Digital Interface Button Rows (Modern Electronic Keypad Elements) -->
+      <g transform="translate(0, 32)">
+        <rect x="-48" y="0" width="26" height="12" rx="4" fill="#FF671F" opacity="0.9" />
+        <rect x="-13" y="0" width="26" height="12" rx="4" fill="#FFFFFF" opacity="0.9" />
+        <rect x="22" y="0" width="26" height="12" rx="4" fill="#16A34A" opacity="0.9" />
+      </g>
+
+      <!-- Bottom Status Pill / Standalone Battery & Security Indicator -->
+      <g transform="translate(0, 88)">
+        <rect x="-50" y="0" width="100" height="18" rx="9" fill="#0A1628" stroke="#334155" stroke-width="1.5" />
+        <circle cx="-34" cy="9" r="3.5" fill="#22C55E" />
+        <text x="4" y="13" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#94A3B8" letter-spacing="1">SECURE VOTE</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== RIGHT TYPOGRAPHY ==================== -->
+  <g id="typographyGroup" transform="translate(540, 0)">
+    <!-- Line 1: VoteAware (Navy, Heavy Bold) -->
+    <text x="0" y="445" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="142" font-weight="900" fill="#0D2B52" letter-spacing="-1.5">VoteAware</text>
+
+    <!-- Line 2: India + Tricolor Bar -->
+    <g transform="translate(0, 585)">
+      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="158" font-weight="900" fill="url(#indiaGrad)" letter-spacing="0">India</text>
+      
+      <!-- Sleek Horizontal Tricolor Bar -->
+      <rect x="410" y="-48" width="370" height="18" rx="9" fill="url(#flagBarGrad)" stroke="#E2E8F0" stroke-width="1" />
+    </g>
+
+    <!-- Line 3: Tagline -->
+    <text x="4" y="665" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="44" font-weight="600" fill="#0D2B52" letter-spacing="0.2">Know Your Vote. Know How It Works.</text>
+  </g>
+
+  <!-- Line 4: Centered Bottom Divider & Sub-tagline across full width -->
+  <g id="bottomTagline" transform="translate(0, 735)">
+    <!-- Left Divider Line -->
+    <line x1="200" y1="0" x2="420" y2="0" stroke="#CBD5E1" stroke-width="2" />
+    
+    <!-- Spaced Slogan -->
+    <text x="750" y="6" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#475569" letter-spacing="7">STRONGER CITIZENS  •  STRONGER INDIA</text>
+    
+    <!-- Right Divider Line -->
+    <line x1="1080" y1="0" x2="1300" y2="0" stroke="#CBD5E1" stroke-width="2" />
+  </g>
+</svg>

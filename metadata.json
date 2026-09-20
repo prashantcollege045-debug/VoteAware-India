@@ -1,0 +1,7 @@
+{
+  "name": "VoteAware India",
+  "description": "An independent educational voter awareness website for citizens and college students in India featuring simple eligibility guidance, registration instructions, official voter services, and electoral facts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
